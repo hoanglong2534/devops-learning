@@ -1,0 +1,21 @@
+services:
+  database:
+    image: postgres:16.11-alpine3.23
+    volumes:
+      - /home/long/STUDY_SPACE/devops-learning/db:/var/lib/db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: mydb
+    ports:
+      - "5433:5432"
+    container_name: postgresql
+    restart: always
+
+  backend:
+    image: devops-learning:v1
+    ports:
+      - "8081:9000"
+    container_name: backend
+    restart: always
+
